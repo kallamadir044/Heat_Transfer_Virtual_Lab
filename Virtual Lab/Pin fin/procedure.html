@@ -132,7 +132,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Lagged cylinder\procedure.html">
+                <a href="C:\Users\hp\Desktop\Virtual Lab\Pin fin\procedure.html">
                     <!-- this anchor text for link your About page to another page -->
                     <div class="icon">
                         <i class="fa fa-file" aria-hidden="true"></i><!-- this is file icon link get form fornt-awesome icon for about -->	
@@ -210,27 +210,74 @@ ul li a:hover .name span{
 
     <div class="procedure">
         <div class="hea">
-            <h2>Test Procedure for Determining Thermal Conductivity of given Insulating Powder</h2>
+            <h2>Test Procedure to Study the temperature distribution along the length of pin fin in natural & forced convection</h2>
         </div>
         <div class="main">
-            <p><strong>AIM:</strong>To plot the radial temperature distribution in the composite cylinder and to determine the thermal conductivity of the pipe insulation.</p>
+            <p><strong>AIM:</strong>To determine temperature distribution and fin efficiency of a pin fin in natural and forced convection.</p>
             <p><strong>APPARATUS:</strong><br>
             The apparatus consists of a metal pipe with two layers of insulation. An electric heating coil wound on a silica rod is placed at the center. The ends are thickly insulated to prevent heat loss so that heat flows only in a radial direction. Three thermocouples each are placed at different radii to measure the temperature distribution within the cylinder.</p>
-            <p><strong>TECHNICAL DATA:</strong><br>
-            Location of thermocouples 1, 2, 3 at a radius r₁ = 25mm<br>
-            Location of thermocouples 4, 5, 6 at a radius rm = 50mm<br>
-            Location of thermocouples 7, 8, 9 on glass wool<br>
-            Location of thermocouples 10, 11,12 at a radius ro = 75mm<br>
-            Length of the pipe                                 = 500 mm<br></p>
+            <p><strong>SPECIFICATIONS: </strong><br>
+           1. Duct size = 15 cm x 10 cm <br>
+           2. Diameter of the pin fin = 1.27 cm <br>
+           3. Diameter of the orifice = 2 cm <br>
+  	   4. Diameter of the delivery pipe = (Int.) = 42 mm <br>
+	   5. Coefficient of discharg (orifice meter) Cd = 0.64 <br>
+	   6. Centrifugal blower 1 H.P single phase motor. <br>
+	   7. No. of thermocouples on fin = 5; (1) to (5) as shown in and indicated on temperature indicator. <br>
+ 	   8. Thermocouple 6 reads ambient temperature in side the duct. <br>
+ 	   9. Thermal conductivity of fin material (brass) = 110 W/m.K(approx.) <br>
+	  10. Temperature Indicator 0 - 3000C with compensation of ambient temperature up to 50 0c. <br>
             <p><strong>PROCEDURE:</strong><br>
-            1. Connect the equipment to a 230 V, 5 amps, 50 Hz electrical source <br>
-            2. Turn the dimmerstat knob clockwise and fix the heat input to a desired wattage.<br>
-            3. Allow the equipment to stabilize and attain steady state<br>
-            4. Turn the thermocouple selector switch knob clockwise and note down temperaturesT1 to T12<br>
-            5. Repeat the experiment for different heat inputs.<br>
-            <p><strong>SPECIMEN CALCULATIONS:</strong></p>
-            <p><strong>Result</strong><br>
-            Thermal conductivity of given insulating powder=  W/mK</p>
+            Natural convection: <br>
+ 	    1. The pin is heated by using heater and adjusting the voltage to 80 V by dimmerstat. <br>
+ 	    2. The temperature at various points are noted including ambient temperatures. <br>
+	    3. After steady state is reached, the final readings of the thermocouples (1 to 5) in addition to the ambient temp are recorded.<br>
+ 	    4. The experiment is repeated by varying voltage say 100, 120. <br>
+	    Forced convection: <br>
+ 	    1. The fin is heated by using the heater and required voltage is adjusted by using dimmer-stat. <br>
+	    2. The blower is started by using the switch.With the help of valve the manometer is adjusted to required height.<br>
+ 	    3. The temperatures are recorded for 1 to 5 points for an interval of 5 minutes. <br>
+ 	    4. The final readings are noted after steady state is reached. <br>
+ 	    5. The experiment is repeated for different manometer heights. <br>
+            <p><strong> CALCULATIONS:</strong></p>
+	    (A) Calculation of value of h in natural convection: <br>
+ 		1.The average temperature of the fin  Ts =(T1+T2+T3+T4+T5)/5 =  ℃ <br>
+                     Air mean temperature Tf =(Ts+T6)/2 =  ℃ <br>
+                     The properties of air µ, Cp, Kair, and Pr are taken from steam tables at Tf <br>
+                2. Determine (Gr×Pr)<br>
+		 Gr = Grashof Number = g*β*ΔT*(L^3)/(V^2) <br> <br>
+                 Pr = Prandtl number = (μ*Cp)/Kair <br>
+		3. The empirical relations of air for free convection are <br>
+ 	          a. Nu = 1.1*(Gr.Pr)^1.7 for 0.1<Gr.Pr<10^4 <br>
+ 	          b. Nu = 0.59*(Gr.Pr)^0.25 for 10^4<Gr.Pr<10^9 <br>
+ 		  c. Nu = 0.13*(Gr.Pr)^(1/3) for 10^9<Gr.Pr<10^12 <br>
+		4. Determine heat transfer coefficient <br>
+		  Nu = Nusset number =(h*Lc)/Kair   Where Lc = d <br>
+ 		5. The heat transfer from a fin <br>
+		 Q= ((hpKA)^0.5)*(Ts-T∞)*tanhmL   Watt <br>
+		6. Determine fin efficiency  <br>
+		 ηfin= (tanhmL)/(mL)  where m= (hP/KA)^0.5    where P=πd , A = (π*d*d)/4 <br>
+               (B) Calculation of h in forced convection: <br>
+		 1. The discharge of air through orifice  <br>
+ 	 	    (Qa ) = Cd*A*((2gha)^0.5) <br>
+                    Where, Cd = Coefficient of discharge of the orifice (0.64) <br>
+                           A = Area of cross-section of orifice = (π*d*d)/4 <br>
+                           d = Diameter of the orifice in meters, hw = h1- h2 /100 m of water <br>
+                           ha = ρwhw/ρa where ρw = density of water = 1000 kg/m^3, ρa = density of air = 1.2 kg/m^3 <br>				 
+		    The velocity of air across the fins <br>
+			  u=(Qa/duct area)*((Tf+273)/(Ta+273)) (use this velocity in calculation of Renolds number) <br>
+		 2. Determine the heat transfer coefficient using the below relations <br>
+ 			(a) Nu = 0.683*(Re)^0.466 when 40<Re<4000 <br>
+ 			 b) Nu= 0.174*(Re)^0.618 when 4000<Re<40000 <br>
+				Where Nu =(h*d)/Kair ,  Re = ρ*u*d/μ (v=µ/ρ) <br>
+		The properties of air µ, Cp, Kair, , ρ, and Pr are taken from steam tables at mean air temperature (Tf) <br>
+		 (3) The heat transfer from a fin <br>
+ 			 Q= ((hpKA)^0.5)*(Ts-T∞)*tanhmL   Watt <br>
+		(4) Determine fin efficiency <br> 
+			ηfin= (tanhmL)/(mL)  where m= (hP/KA)^0.5    where P=πd , A = (π*d*d)/4 <br>
+            <p><strong>RESULT:</strong><br>
+            The efficiency of pin fin in natural convection =  <br>
+	    The efficiency of pin fin in forced convection = </p>
             
 </p></div></div>
 </body>
