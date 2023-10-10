@@ -1,6 +1,7 @@
 <!doctype html>
+<html>
     <head>
-        <title>Procedure</title>
+        <title>Calculator</title>
         <!-- change or write your page title with the help of title tags-->
         <link rel="stylesheet" type="text/css" href="nav.css">
         <!-- connect css file with html useing link tag -->
@@ -121,7 +122,7 @@ ul li a:hover .name span{
             <li>
                 <!--The HTML li element is used to represent an item in a list. ... In menus and unordered lists-->
                 <!--the a tag defines a hyperlink, which is used to link from one page to another-->
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Main\Experiments.html">
+                <a href="https://project-gpreht.github.io/virtuallab/">
                     <!-- this anchor text for link your home to another page -->
                     <div class="icon">
                         <i class="fa fa-home" aria-hidden="true"></i><!-- this is home icon link get form fornt-awesome icon for home button -->	
@@ -132,7 +133,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Lagged sphere\procedure.html">
+                <a href="./procedure.html">
                     <!-- this anchor text for link your About page to another page -->
                     <div class="icon">
                         <i class="fa fa-file" aria-hidden="true"></i><!-- this is file icon link get form fornt-awesome icon for about -->	
@@ -143,7 +144,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="./simulator.html">
                     <!-- this anchor text for link your service page to another page -->
                     <div class="icon">
                         <i class="fa fa-cogs" aria-hidden="true"></i><!-- this is cogs icon link get form fornt-awesome iocn for service menu -->	
@@ -154,7 +155,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="./Calculator.html">
                     <!-- this anchor text for link your Blog page to another page -->
                     <div class="icon">
                         <i class="fa fa-book" aria-hidden="true"></i><!-- this is Book icon link get form fornt-awesome icon for Blog --> 	
@@ -177,7 +178,118 @@ ul li a:hover .name span{
             </li>
         </ul>
         </div>
+        <div class="cal">
+        <h1>Observation Table:</h1>
+            <table>
+    <tr>
+        <th colspan="3">Heat Input</th>
+        <th colspan="3">Temperature at radius R1 <sup>0</sup>C</th>
+        <th colspan="3">Temperature at radius R2 <sup>0</sup>C</th>
+        <th colspan="3">Temperature at radius R3 <sup>0</sup>C</th>
+    </tr>
+    <tr>
+        <th>V(volts)</th>
+        <th>I(amps)</th>
+        <th>V*I(watts)</th>
+        <th>T1</th>
+        <th>T2</th>
+        <th>T3</th>
+        <th>T4</th>
+        <th>T5</th>
+        <th>T6</th>
+        <th>T10</th>
+        <th>T11</th>
+        <th>T12</th>
+    </tr>
+    <tr>
+        <td><input type="number" id="V" style="width:100px" required></td>
+        <td><input type="number" id="I" style="width:100px" required></td>
+        <td id="power"></td>
+        <td><input type="number" id="t1" style="width:70px"></td>
+        <td><input type="number" id="t2" style="width:70px"></td>
+        <td><input type="number" id="t3" style="width:70px"></td>
+        <td><input type="number" id="t4" style="width:70px"></td>
+        <td><input type="number" id="t5" style="width:70px"></td>
+        <td><input type="number" id="t6" style="width:70px"></td>
+        <td><input type="number" id="t10" style="width:70px"></td>
+        <td><input type="number" id="t11" style="width:70px"></td>
+        <td><input type="number" id="t12" style="width:70px"></td>
+    </tr>
+</table>
+<button onclick="calculatepow()">Calculate</button>
+<p id="result"></p>
+</div>
+<script>
+    function calculatepow(){
+        var V=document.getElementById('V').value;
+        var I=document.getElementById('I').value;
+        if(!isNaN(V) && !isNaN(I)){
+            var Q=V*I;
+            Q=Q.toFixed(2);
+            document.getElementById('power').innerHTML=Q;
+            var t1=parseInt(document.getElementById('t1').value);
+            var t2=parseInt(document.getElementById('t2').value);
+            var t3=parseInt(document.getElementById('t3').value);
+            var t4=parseInt(document.getElementById('t4').value);
+            var t5=parseInt(document.getElementById('t5').value);
+            var t6=parseInt(document.getElementById('t6').value);
+            var t10=parseInt(document.getElementById('t10').value);
+            var t11=parseInt(document.getElementById('t11').value);
+            var t12=parseInt(document.getElementById('t12').value);
+            var ri=0.025;
+            var rm=0.05;
+            var ro=0.075;
+            var L=0.5;
+            //document.getElementById('result').innerHTML=Math.pow(3,4);
+            //document.getElementById('result').innerHTML=(t1+t2+t3)/3;
+            if(!isNaN(t1) && !isNaN(t2) && !isNaN(t3) && !isNaN(t4) && !isNaN(t5) && !isNaN(t6) && !isNaN(t10) && !isNaN(t11) && !isNaN(t12)){
+                var ti=((t1+t2+t3)/3).toFixed(2);
+                var tm=((t4+t5+t6)/3).toFixed(2);
+                var to=((t10+t11+t12)/3).toFixed(2);
+                let res=`<h1>${'Specimen Calculations'}</h1> <h2>${'1) Mean readings:'}</h2>`;
+                res+=`<p>Tinside=<math><mfrac style="font-size:25px"><mn>T1+T2+T3</mn><mi>3</mi></mfrac></math>${'='+ti}<sup>0</sup>C</p>`;
+                res+=`<p>Tmiddle=<math><mfrac style="font-size:25px"><mn>T4+T5+T6</mn><mi>3</mi></mfrac></math>${'='+tm}<sup>0</sup>C</p>`;
+                res+=`<p>Toutside=<math><mfrac style="font-size:25px"><mn>T10+T11+T12</mn><mi>3</mi></mfrac></math>${'='+to}<sup>0</sup>C</p>`;
+                res+=`<h2>${'2) Heat input:'}</h2>`;
+                res+=`<p>${'Actual heat input Qact=V*I='+Q}W</p>`;
+                var k=((Q*Math.log(ro/ri))/(2*3.14*L*(ti-to))).toFixed(2);
+                var k1=((Q*Math.log(rm/ri))/(2*3.14*L*(ti-tm))).toFixed(2);
+                var k2=((Q*Math.log(ro/rm))/(2*3.14*L*(tm-to))).toFixed(2);
+                res+=`<h2>${'3) Thermal conductivity:'}</h2>`;
+                res+=`<p>K=<math><mfrac style="font-size:25px"><mn>Qact ln(ro/ri)</mn><mi>2&#8508L(ti-to)</mi></mfrac></math>=`+k;
+                res+=`W/m-K<br><br>K1=<math><mfrac style="font-size:25px"><mn>Qact ln(rm/ri)</mn><mi>2&#8508L(ti-tm)</mi></mfrac></math>=`+k1;
+                res+=`W/m-K<br><br>K2=<math><mfrac style="font-size:25px"><mn>Qact ln(ro/rm)</mn><mi>2&#8508L(tm-to)</mi></mfrac></math>=`+k2;
+                res+=`W/m-K</p>`;
+                document.getElementById('result').innerHTML=res;
+
+            }
+        }
+    }
+</script>
 <style>
+    table,th,td{
+        border:1px solid;
+        border-collapse:collapse;
+    }
+    .cal{
+        position:absolute;/* set the position of the navigation bar*/
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    button{
+        position:absolute;/* set the position of the navigation bar*/
+        top: 210px;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    #result{
+    	position:absolute;/* set the position of the navigation bar*/
+        top: 500px;
+        left:25%;
+        transform: translate(-50%,-50%);
+    }
+    
     .menu{
         position:relative;
         top:30px;
@@ -207,55 +319,5 @@ ul li a:hover .name span{
     left:1px;
 }
     </style>
-
-    <div class="procedure">
-        <div class="hea">
-            <h2>Test Procedure for Determining Thermal Conductivity of given Insulating Powder</h2>
-        </div>
-        <div class="main">
-            <p><strong>AIM:</strong> To determine the thermal conductivity of an insulating powder..</p>
-            <p><strong>APPARATUS:</strong><br>
-            </The apparatus consists of two concentric copper spheres. Heating coil is provided in the inner sphere. The space between the inner and outer spheres are filled by the insulating 
-powder whose thermal conductivity is to be determined. Chromel-Alumel thermocouples 
-are used to record the temperatures. Thermocouples 1 to 6 are embedded on the surface 
-of inner sphere and 7 to 12 are embedded on the outer shell surface.p>
-            <p><strong>TECHNICAL DATA:</strong><br>
-            Location of thermocouples 1, 2, 3 at a radius r₁ = 25mm<br>
-            Location of thermocouples 4, 5, 6 at a radius rm = 50mm<br>
-            Location of thermocouples 7, 8, 9 on glass wool<br>
-            Location of thermocouples 10, 11,12 at a radius ro = 75mm<br>
-            Length of the pipe                                 = 500 mm<br></p>
-            <p><strong>PROCEDURE:</strong><br>
-            1. Connect the equipment to a 230 V, 5 amps, 50 Hz electrical source <br>
-            2. Turn the dimmerstat knob clockwise and fix the heat input to a desired wattage.<br>
-            3. Allow the equipment to stabilize and attain steady state<br>
-            4. Turn the thermocouple selector switch knob clockwise and note down temperaturesT1 to T12<br>
-            5. Repeat the experiment for different heat inputs.<br>
-            <p><strong>SPECIMEN CALCULATIONS:</strong></p>
-            <p><strong>Result</strong><br>
-            Thermal conductivity of given insulating powder=  W/mK</p>
-            
-</p></div></div>
 </body>
-<style>
-    .main{
-        border: 2px solid black;
-        width:800px;
-        height:1000px;
-        position: relative;
-        top:100px;
-        left:250px;
-        background-color: lightgoldenrodyellow;
-    }
-    .hea{
-    border:2px solid black;
-    width:800px;
-    height:100px;
-    position:relative;
-    top:100px;
-    left:250px;
-    background-color: lightgoldenrodyellow;
-    }
-    
-</style>
 </html>
