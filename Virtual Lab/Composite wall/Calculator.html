@@ -178,6 +178,97 @@ ul li a:hover .name span{
             </li>
         </ul>
         </div>
+	    <div class="cal">
+            <h2>Observation table:</h2>
+<table>
+    <tr>
+        <th colspan="1">Heat Input</th>
+        <th colspan="8">Thermocouple readings<sup>0</sup>C</th>
+    </tr>
+    <tr>
+        <th>V(volt)</th>
+        <th>I(amp)</th>
+        <th>V*I(watts)</th>
+        <th>T<sub>1</sub></th>
+        <th>T<sub>2</sub></th>
+        <th>T<sub>3</sub></th>
+        <th>T<sub>4</sub></th>
+        <th>T<sub>5</sub></th>
+        <th>T<sub>6</sub></th>
+        <th>T<sub>7</sub></th>
+        <th>T<sub>8</sub></th>
+    </tr>
+    <tr>
+        <td><input type="number" id="V" style="width:100px"></td>
+        <td><input type="number" id="I" style="width:100px"></td>
+        <td id="power"></td>
+        <td><input type="number" id="t1" style="width:65px"></td>
+        <td><input type="number" id="t2" style="width:65px"></td>
+        <td><input type="number" id="t3" style="width:65px"></td>
+        <td><input type="number" id="t4" style="width:65px"></td>
+        <td><input type="number" id="t5" style="width:65px"></td>
+        <td><input type="number" id="t6" style="width:65px"></td>
+        <td><input type="number" id="t7" style="width:65px"></td>
+        <td><input type="number" id="t8" style="width:65px"></td>
+    </tr>
+</table>
+<button onclick="calculate()">Calculate</button>
+<p id="result"></p>
+</div>
+<script>
+    function calculate(){
+        var V=document.getElementById('V').value;
+        var I=document.getElementById('I').value;
+        if(!isNaN(V) && !isNaN(I)){
+            var Q=V*I;
+            Q=Q.toFixed(2);
+            document.getElementById('power').innerHTML=Q;
+            var t1=parseInt(document.getElementById('t1').value);
+            var t2=parseInt(document.getElementById('t2').value);
+            var t3=parseInt(document.getElementById('t3').value);
+            var t4=parseInt(document.getElementById('t4').value);
+            var t5=parseInt(document.getElementById('t5').value);
+            var t6=parseInt(document.getElementById('t6').value);
+            var t7=parseInt(document.getElementById('t7').value);
+            var t8=parseInt(document.getElementById('t8').value);
+            var b=0.063;
+	    var b1=0.025;
+            var b2=0.020;
+	    var b3=0.018;
+	    var d=0.1;
+            //document.getElementById('result').innerHTML=Math.pow(3,4);
+            //document.getElementById('result').innerHTML=(t1+t2+t3)/3;
+            if(!isNaN(t1) && !isNaN(t2) && !isNaN(t3) && !isNaN(t4) && !isNaN(t5) && !isNaN(t6) && !isNaN(t7) && !isNaN(t8)){
+                
+                var Ta=(t1+t2)/2;
+                var Tb=(t3+t4)/2;
+		var Tc=(t5+t6)/2;
+                var Td=(t7+t8)/2;
+               var  A=(3.14*d*d)/4;
+                var q=Q/(2*A);
+                var R<sub>total</sub>=(Ta-Td)/q;
+		var R<sub>mild</sub>=(Ta-Tb)/q;
+		var R<sub>bak</sub>=(Tb-Tc)/q;
+		var R<sub>wood</sub>=(Tc-Td)/q;
+		var K<sub>com</sub>=(q*b)/(Ta-Td);
+		var K<sub>mild</sub>=(q*b1)/(Ta-Tb);
+		var K<sub>bak</sub>=(q*b2)/(Tb-Tc);
+		var K<sub>wood</sub>=(q*b3)/(Tc-Td);
+                var res=`<h1>Calculation:</h1>`;
+                res+=`<p>Heat Flux = q= ${q}W/m<sup>2</sup></p>`;
+		res+=`<p>Thermal resistance of composite wall=R<sub>total</sub> = ${R<sub>total</sub>}m<sup>2</sup>K/W</p>`;
+		res+=`<p>Thermal resistance of Mild steel=R<sub>mild</sub> = ${R<sub>mild</sub>}m<sup>2</sup>K/W</p>`;
+		res+=`<p>Thermal resistance of Bakelite=R<sub>bak</sub> = ${R<sub>bak</sub>}m<sup>2</sup>K/W</p>`;
+		res+=`<p>Thermal resistance of Wood=R<sub>wood</sub> = ${R<sub>wood</sub>}m<sup>2</sup>K/W</p>`;
+		res+=`<p>Thermal conductivity of composite wall=K<sub>com</sub> = ${K<sub>com</sub>}W/mK</p>`;
+		res+=`<p>Thermal conductivity of Mild steel=K<sub>mild</sub> = ${K<sub>mild</sub>}W/mK</p>`;
+                res+=`<p>Thermal conductivity of Bakelite=K<sub>bak</sub> = ${K<sub>bak</sub>}W/mK</p>`;
+		res+=`<p>Thermal conductivity of Wood=K<sub>wood</sub> = ${K<sub>wood</sub>}W/mK</p>`;
+                document.getElementById('result').innerHTML=res;
+            }
+        }
+    }
+</script>
 <style>
     .menu{
         position:relative;
