@@ -1,7 +1,8 @@
+
 <!doctype html>
 <html>
     <head>
-        <title>Procedure</title>
+        <title>Calculator</title>
         <!-- change or write your page title with the help of title tags-->
         <link rel="stylesheet" type="text/css" href="nav.css">
         <!-- connect css file with html useing link tag -->
@@ -122,7 +123,7 @@ ul li a:hover .name span{
             <li>
                 <!--The HTML li element is used to represent an item in a list. ... In menus and unordered lists-->
                 <!--the a tag defines a hyperlink, which is used to link from one page to another-->
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Main\Experiments.html">
+                <a href="https://project-gpreht.github.io/virtuallab/">
                     <!-- this anchor text for link your home to another page -->
                     <div class="icon">
                         <i class="fa fa-home" aria-hidden="true"></i><!-- this is home icon link get form fornt-awesome icon for home button -->	
@@ -133,7 +134,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Stefan boltzman appartus\procedure.html">
+                <a href="./procedure.html">
                     <!-- this anchor text for link your About page to another page -->
                     <div class="icon">
                         <i class="fa fa-file" aria-hidden="true"></i><!-- this is file icon link get form fornt-awesome icon for about -->	
@@ -144,7 +145,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Stefan boltzman appartus\simulator.html">
+                <a href="./simulator.html">
                     <!-- this anchor text for link your service page to another page -->
                     <div class="icon">
                         <i class="fa fa-cogs" aria-hidden="true"></i><!-- this is cogs icon link get form fornt-awesome iocn for service menu -->	
@@ -155,7 +156,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Stefan boltzman appartus\Calculator.html">
+                <a href="./Calculator.html">
                     <!-- this anchor text for link your Blog page to another page -->
                     <div class="icon">
                         <i class="fa fa-book" aria-hidden="true"></i><!-- this is Book icon link get form fornt-awesome icon for Blog --> 	
@@ -178,10 +179,76 @@ ul li a:hover .name span{
             </li>
         </ul>
         </div>
+        <div class="cal">
+            <h2>Observation table:</h2>
+<table>
+    <tr>
+        
+        <th colspan="4">Thermocouple readings<sup>0</sup>C</th>
+    </tr>
+    <tr>
+        <th>T<sub>1</sub></th>
+        <th>T<sub>2</sub></th>
+        <th>T<sub>3</sub></th>
+        <th>T<sub>4</sub></th>
+        
+    </tr>
+    <tr>
+        <td><input type="number" id="t1" style="width:65px"></td>
+        <td><input type="number" id="t2" style="width:65px"></td>
+        <td><input type="number" id="t3" style="width:65px"></td>
+        <td><input type="number" id="t4" style="width:65px"></td>
+    </tr>
+</table>
+<button onclick="calculate()">Calculate</button>
+<p id="result"></p>
+</div>
+<script>
+    function calculate(){
+            var t1=parseInt(document.getElementById('t1').value);
+            var t2=parseInt(document.getElementById('t2').value);
+            var t3=parseInt(document.getElementById('t3').value);
+            var t4=parseInt(document.getElementById('t4').value);
+            var td=t4;
+            var m=5;
+            var c=381;
+            var d=19.90;
+            //document.getElementById('result').innerHTML=Math.pow(3,4);
+            //document.getElementById('result').innerHTML=(t1+t2+t3)/3;
+            if(!isNaN(t1) && !isNaN(t2) && !isNaN(t3) && !isNaN(t4)){
+                
+                var T=(t1+t2+t3)/3;
+                T=T.toFixed(2);
+                A=3.14*d*d/4;
+                σ= (m*c*0.192)/(A*((T*T*T*T)-(td*td*td*td)));
+                var res=`<h1>Calculation:</h1>`;
+                res+=`<p>Average  surface temperature of the hemisphere =T=${T} c</p>`;
+                res+=`<p>The value of Stefan Boltzman constant=σ=${σ} W/(m<sup>2</sup> K<sup>4</sup>)</p>`;
+                document.getElementById('result').innerHTML=res;
+
+            }
+        }
+</script>
 <style>
+    table,th,td{
+        border:1px solid black;
+        border-collapse: collapse;
+    }
     .menu{
         position:relative;
         top:30px;
+    }
+    .cal{
+        position:absolute;/* set the position of the navigation bar*/
+        top: 460px;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    button{
+        position:absolute;/* set the position of the navigation bar*/
+        top: 210px;
+        left: 50%;
+        transform: translate(-50%,-50%);
     }
 .col1{
     position:relative;
