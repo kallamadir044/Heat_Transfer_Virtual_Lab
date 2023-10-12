@@ -11,6 +11,11 @@
     
     <style>
         /* Add a sky blue background color to the body background */
+        
+        table, tr,td,th{
+            border:2px solid black;
+           margin : 0 auto 0 auto;
+        }
 body{
 	margin: 0;
 	padding: 0;
@@ -178,9 +183,9 @@ ul li a:hover .name span{
             </li>
         </ul>
         </div>
-	    <div class="cal">
-            <h2>Observation table:</h2>
-<table>
+	    <div class="cal" style="margin-top:10%;;">
+           <center><h2 style="margin: 0 auto 0 auto; margin-bottom: 30px;">Observation table:</h2></center> 
+<table style="border: 2px solid black;">
     <tr>
         <th colspan="1">Heat Input</th>
         <th colspan="8">Thermocouple readings<sup>0</sup>C</th>
@@ -212,7 +217,8 @@ ul li a:hover .name span{
         <td><input type="number" id="t8" style="width:65px"></td>
     </tr>
 </table>
-<button onclick="calculate()">Calculate</button>
+<br>
+<center><button onclick="calculate()">Calculate</button></center>
 <p id="result"></p>
 </div>
 <script>
