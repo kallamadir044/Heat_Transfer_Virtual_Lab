@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Procedure</title>
+        <title>Simulator</title>
         <!-- change or write your page title with the help of title tags-->
         <link rel="stylesheet" type="text/css" href="nav.css">
         <!-- connect css file with html useing link tag -->
@@ -122,7 +122,7 @@ ul li a:hover .name span{
             <li>
                 <!--The HTML li element is used to represent an item in a list. ... In menus and unordered lists-->
                 <!--the a tag defines a hyperlink, which is used to link from one page to another-->
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Main\Experiments.html">
+                <a href="https://project-gpreht.github.io/virtuallab/">
                     <!-- this anchor text for link your home to another page -->
                     <div class="icon">
                         <i class="fa fa-home" aria-hidden="true"></i><!-- this is home icon link get form fornt-awesome icon for home button -->	
@@ -133,7 +133,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Stefan boltzman appartus\procedure.html">
+                <a href="./procedure.html">
                     <!-- this anchor text for link your About page to another page -->
                     <div class="icon">
                         <i class="fa fa-file" aria-hidden="true"></i><!-- this is file icon link get form fornt-awesome icon for about -->	
@@ -144,7 +144,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Stefan boltzman appartus\simulator.html">
+                <a href="./simulator.html">
                     <!-- this anchor text for link your service page to another page -->
                     <div class="icon">
                         <i class="fa fa-cogs" aria-hidden="true"></i><!-- this is cogs icon link get form fornt-awesome iocn for service menu -->	
@@ -155,7 +155,7 @@ ul li a:hover .name span{
                 </a>
             </li>
             <li>
-                <a href="C:\Users\hp\Desktop\Virtual Lab\Stefan boltzman appartus\Calculator.html">
+                <a href="./Calculator.html">
                     <!-- this anchor text for link your Blog page to another page -->
                     <div class="icon">
                         <i class="fa fa-book" aria-hidden="true"></i><!-- this is Book icon link get form fornt-awesome icon for Blog --> 	
@@ -178,7 +178,199 @@ ul li a:hover .name span{
             </li>
         </ul>
         </div>
-<style>
+        <div class="sim">
+            <img id="temp" src="https://i.ibb.co/rKBkQNh/Nt1.jpg">
+            <button id="rev" onclick="powerdec()"><i class="arrow left"></i></button>
+            <button id="forw" onclick="powerinc()"><i class="arrow right"></i></button>
+            <button id="on" onclick="poweronoff()"><img id="power" src="https://i.ibb.co/FVX68K1/poweroff.jpg"></button>
+            <button id="left" onclick="changedec()"><i class="arrow left"></i></button>
+            <button id="right" onclick="changein()"><i class="arrow right"></i></button>
+            <div class="tempdisplay">
+              <div class="display1 display">
+                <h1 id="temperature"></h1>
+              </div>
+            </div>
+            </div>
+            <script>
+                let temps=[[28,28,28,28],[69.9,69.7,69.6,30.8]]
+                let power_status=false;
+                var x=0;
+                var y=1;
+                let t=[28,28,28,28];
+                function poweronoff(){
+                    let image = document.getElementById("power");
+                    if (image.src.includes("off")) {
+                        image.src ="https://i.ibb.co/vq6VMh5/poweron.jpg";
+                        power_status=true;
+                        var displayElement = document.getElementsByClassName("display1")[0].style;
+                        displayElement.width = "55px";
+                        displayElement.height = "23px";
+                        displayElement.backgroundColor = "rgba(150, 0, 0, 0.5)";
+                        displayElement.boxShadow = "0 0 25px rgba(255, 0, 0, 0.8)";
+                        displayElement.position = "relative";
+                        displayElement.top = "23px";
+                        displayElement.left = "25px";
+                        document.getElementById("temperature").innerHTML=t[x];
+                        tempupdate();
+                    }
+                    else {
+                        image.src ="https://i.ibb.co/FVX68K1/poweroff.jpg";
+                        power_status=false;
+                        var displayElement = document.getElementsByClassName("display1")[0].style;
+                        displayElement.width = "";
+                        displayElement.height = "";
+                        displayElement.backgroundColor = "";
+                        displayElement.boxShadow = "";
+                        displayElement.position = "";
+                        displayElement.top = "";
+                        displayElement.left = "";
+                        document.getElementById("temperature").innerHTML="";
+                        tempupdate();
+                        
+                    }
+                }
+                a=['https://i.ibb.co/rKBkQNh/Nt1.jpg',
+                "https://i.ibb.co/0qmV1C2/Nt2.jpg",
+                "https://i.ibb.co/C5qRjCD/Nt3.jpg",
+                "https://i.ibb.co/vPx22Cy/Nt4.jpg"];
+                function changein()
+                {
+                    if(x+1>a.length-1)
+                    {
+                        document.getElementById("temp").src=a[a.length-1];
+                    }
+                    else
+                    {
+                        x++;
+                        document.getElementById("temp").src=a[x];
+                    }
+                    if(power_status){
+                        document.getElementById("temperature").innerHTML=t[x];
+                    }
+                }
+                function changedec()
+                {
+                    if(x-1<0)
+                    {
+                        document.getElementById("temp").src=a[0];
+                    }
+                    else
+                    {
+                        x--;
+                        document.getElementById("temp").src=a[x];
+                    }
+                    if(power_status){
+                        document.getElementById("temperature").innerHTML=t[x];
+                    }
+                }
+                function tempupdate(){
+                    let timerInterval;
+                    function updateValue() {
+                        for(let i=0;i<4;i++){
+                            const givenNumber = temps[y][i];
+                            if (t[i] > givenNumber ||(power_status==false && givenNumber>28)) {
+                                t[i]--;
+                            }
+                            else if(t[i]<givenNumber){
+                                t[i]++;
+                            }
+                            if(power_status){
+                                document.getElementById('temperature').innerHTML= t[x];
+                            }
+                        }
+                    }
+                    function startTimer() {
+                        timerInterval = setInterval(updateValue, 5000);
+                    }
+                    function stopTimer() {
+                        clearInterval(timerInterval);
+                    }
+                    startTimer();
+                }
+        </script>
+         <style>
+            .arrow {
+                border: solid black;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+            }
+        
+            .right {
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);                }
+            .left {
+                transform: rotate(135deg);
+                -webkit-transform: rotate(135deg);
+            }
+            #on{
+                position:relative;
+                top:275px;
+                left:70px;
+                width:30px;
+                height:20px;
+            }
+        .sim{
+            background-image: url("https://i.ibb.co/Qf445ZP/stefan-boltzman-image.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            height:800px;
+            width:800px;
+            position:absolute;/* set the position of the navigation bar*/
+	        top: 800px;
+	        left: 50%;
+	        transform: translate(-50%,-50%);
+            border: 2px solid black;
+        
+        }
+        #temp{
+            width:81px;
+            height:79px;
+            position: relative;
+            top:278px;
+            left:270px;
+        }
+        #left{
+            position:relative;
+            top:295px;
+            left:99px;
+        }
+        #right{
+            position:relative;
+            top:295px;
+            left:125px;
+        }
+        .tempdisplay{
+          width:110px;
+          height:63px;
+          background-image: url("https://i.ibb.co/yYBZmXG/tempindicator.jpg");
+          background-repeat: no-repeat;
+          background-size: 110px 63px;
+          position:relative;
+          top:190px;
+          left:380px;
+        }
+        #power{
+            position:relative;
+            top:-3px;
+            left:-18px;
+            width:40px;
+            height:50px;
+        }
+        #temperature,#voltage,#current{
+            color: rgb(500, 0, 0);
+            text-align:center;
+            font-family: "digital-7";
+            font-size: 25px;
+            text-shadow: 0 0 80px;
+        }
+        @font-face{
+            font-family:"digital-7";
+            src:url(digital-7.ttf);
+        }
+        /*
+        C:/Users/Admin/Downloads/digital-dream/DIGITALDREAM.ttf
+        */
     .menu{
         position:relative;
         top:30px;
