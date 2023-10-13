@@ -185,9 +185,9 @@ ul li a:hover .name span{
         </div>
 	    <div class="cal" style="margin-top:10%;;">
            <center><h2 style="margin: 0 auto 0 auto; margin-bottom: 30px;">Observation table:</h2></center> 
-<table style="border: 2px solid black;">
+           <table>
     <tr>
-        <th colspan="1">Heat Input</th>
+        <th colspan="3">Heat Input</th>
         <th colspan="8">Thermocouple readings<sup>0</sup>C</th>
     </tr>
     <tr>
@@ -285,6 +285,10 @@ ul li a:hover .name span{
     }
 </script>
 <style>
+  table,td,th{
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
     .menu{
         position:relative;
         top:30px;
